@@ -1,13 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>UTM Jazz</title>
-    <link rel="stylesheet" href="/css/master.css">
-  </head>
-  <body>
-    <button id="begin-button" class="button">Go</button>
-    <div id="turing-tape" class="tape-display"></div>
-    <script src="./index.js"></script>
-  </body>
+<html lang="en" dir="ltr"> 
+<meta charset="utf-8">
+<title>UTM Jazz</title>
+<head>
+    <style>
+    
+<!-- dropdown button for instruments-->
+        .dropbtn{
+            background-color: rgb(163, 197, 212);
+            color: black;
+            padding: 8px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .dropdown{ 
+            position: relative;
+            display: inlinke-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px
+        }
+        
+        .dropdown-content a {
+            color: grey;
+            padding: 16px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            background-color:lavender;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown:hover .dropbtn {
+            background-color: gainsboro;
+        }
+        
+        </style>
+        </head>
+        <body> 
+        
+        
+        <h1 style="text-align:center;"> Universal Turing Music Player </h1>
+        <p>Description of UTM Jazz. </p>
+        
+        <div class = "dropdown" style="float:left" >
+                <button class = "dropbtn">Instruments</button>
+                <div class = "dropdown-content" style="left:0;">
+                    <a href = "#">Organ</a>
+                    <a href = "#">Bass</a>
+                    <a href = "#">Brass</a>
+                </div>
+        
+            <br>
+            <br>
+         </div>
+
+         <form></form> 
+             &nbsp States: <input type="text"> 
+             <link rel="stylesheet" href="/css/master.css">
+            <button id="begin-button" class="button">Go</button> 
+            <div id="turing-tape" class="tape-display"></div> 
+            <script src="./index.js"></script>
+            <br>
+            <br>
+            <button style = "float: left">Randomize</button>
+            <button style = "float: right">Reset</button>
+               
+            </form>
+
+</body>
 </html>
+
