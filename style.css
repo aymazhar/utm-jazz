@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito:300);
+
+:root{
+    --width: 665px;
+    --height: 425px;
+} 
+
+#music-animation {
+    width: var(--width);
+    height: 100px;
+    position: relative;
+    background: rgb(243, 243, 243);
+}
+
+#sheet-divider {
+    width: var(--width);
+    height: 5px;
+    position: relative;
+    background: white;
+}
+
+#music-sheets {
+    border-style: solid;
+    border-color: rgb(14, 14, 22);
+    border-radius: 4px;
+    width: var(--width);
+    height: var(--height);
+    background: white;
+    position: relative;
+    left: 650px;
+    bottom: 475px;
+}
+
+
+#music-bar{
+    width: 3px;
+    height: var(--height);
+    position: absolute;
+    background-color: black;
+    z-index: 100;
+    top: 0px;
+}
+
+
+#music-notes{
+    height: 10px;
+    width: 10px; 
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgb(37, 37, 37);
+    z-index: 50;
+}
+
+
+#h1, #h2{
+    text-align: center;
+    font-family: "Nunito";
+}
+
+#instrument-0, #instrument-1, #instrument-2, #instrument-3, #stateval {
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+    font-family: "Nunito";
+}
+
+
+body { font-family: "Nunito", sans-serif; font-size: 20px; }
+a    { text-decoration: none; }
+
+#begin-button, #random-button, #reset-button
+{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  
+  margin: 5em auto;
+  
+  position: relative; 
+  top:0; right:0; bottom:0; left:0;
+  
+  padding: 20px, 0;
+  width: 130px;
+  height:45px;
+  border-radius: 4px;
+
+  background: rgb(83, 190, 96);
+  border: 1px solid rgb(83, 190, 96);
+  color: #FFF;
+  overflow: hidden;
+  
+  transition: all 0.5s;
+}
+
+#random-button{
+    width: 190px;
+}
+
+
+
+

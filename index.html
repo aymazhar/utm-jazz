@@ -3,83 +3,63 @@
 <meta charset="utf-8">
 <title>UTM Jazz</title>
 <head>
-    <style>
-    
-<!-- dropdown button for instruments-->
-        .dropbtn{
-            background-color: rgb(163, 197, 212);
-            color: black;
-            padding: 8px;
-            font-size: 12px;
-            border: none;
-            cursor: pointer;
-        }
+  <link rel ="stylesheet" type="text/css" href="style.css">
         
-        .dropdown{ 
-            position: relative;
-            display: inlinke-block;
-        }
-        
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 160px
-        }
-        
-        .dropdown-content a {
-            color: grey;
-            padding: 16px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        
-        .dropdown-content a:hover {
-            background-color:lavender;
-        }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        .dropdown:hover .dropbtn {
-            background-color: gainsboro;
-        }
-        
-        </style>
-        </head>
-        <body> 
-        
-        
-        <h1 style="text-align:center;"> Universal Turing Music Player </h1>
-        <p>Description of UTM Jazz. </p>
-        
-        <div class = "dropdown" style="float:left" >
-                <button class = "dropbtn">Instruments</button>
-                <div class = "dropdown-content" style="left:0;">
-                    <a href = "#">Organ</a>
-                    <a href = "#">Bass</a>
-                    <a href = "#">Brass</a>
-                </div>
-        
-            <br>
-            <br>
-         </div>
+        <h1 id = h1> Universal Turing Music Player </h1>
 
-         <form></form> 
-             &nbsp States: <input type="text"> 
-             <link rel="stylesheet" href="/css/master.css">
+        <br>
+        <p id = h2>Description of UTM Jazz. </p>
+
+        <br>
+        <br>
+        <p id = h3> Choose your instruments: </p>
+        <select id="instrument-0">
+
+            <option value="chiptune">Chiptune</option>
+            <option value="brass">Brass</option>
+            <option value="bass">Bass</option>
+            <option value="organ">Organ</option>
+        </select>
+
+        <select id="instrument-1">
+
+            <option value="chiptune">Chiptune</option>
+            <option value="brass">Brass</option>
+            <option value="bass">Bass</option>
+            <option value="organ">Organ</option>
+        </select>
+
+        <select id="instrument-2">
+
+            <option value="chiptune">Chiptune</option>
+            <option value="brass">Brass</option>
+            <option value="bass">Bass</option>
+            <option value="organ">Organ</option>
+        </select>
+
+        <select id="instrument-3">
+
+            <option value="chiptune">Chiptune</option>
+            <option value="brass">Brass</option>
+            <option value="bass">Bass</option>
+            <option value="organ">Organ</option>
+        </select>
+
+        <form> 
+            <br>
+            <br>
+            <br>
+            Choose the number of states: <input type="number" min=1 max=17 id="stateval">
+        </form>
             <button id="begin-button" class="button">Go</button> 
-            <div id="turing-tape" class="tape-display"></div> 
+            <button id="random-button" class="button">Randomize</button>
+            <button id="reset-button" class="button">Reset</button>       
             <script src="./index.js"></script>
-            <br>
-            <br>
-            <button style = "float: left">Randomize</button>
-            <button style = "float: right">Reset</button>
-               
-            </form>
-
+          <div id="music-sheets">
+              <div id="sheet-divider"></div>
+              <div id="music-bar"></div>
+          </div>   
+          
+        </head>            
 </body>
 </html>
-
