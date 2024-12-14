@@ -126,8 +126,19 @@ function getUserOptions() {
     instruments: [],
     states: 4
   };
-  userOptions.states = parseInt(document.querySelector('#stateval').value, 10);
+  const stateSelector = document.querySelector('#stateval')
+  console.log(stateSelector.value, 'stateSelector.value', typeof stateSelector.value)
+  let selectedState = parseInt(stateSelector.value, 10);
+  if (selectedState > MAXSTATES) {
+    selectedState = MAXSTATES
+    stateSelector.value = MAXSTATES.toString()
+  } else if (selectedState < MINSTATES) {
+    selectedState = MINSTATES
+    stateSelector.value = MINSTATES.toString()
+  }
 
+  userOptions.states = selectedState
+  console.log(userOptions.states)
   for (let i = 0; i < 4; i++) {
     userOptions.instruments.push(
       document.querySelector(`#instrument-${i}`).value);
@@ -182,7 +193,16 @@ function makeImage(staff) {
     const noteyvalue = 10;
     // For each note for each instrument staff, create a new note and place on img
     for (let x = 0; x < staff[y].length; x++) {
-      const newnote = document.createElement('div');
+      const svgNamespace = "http://www.w3.org/2000/svg";
+      const newnote = document.createElementNS(svgNamespace, "svg");
+      newnote.setAttribute("viewBox", "-7 0 30 30");
+
+      const path = document.createElementNS(svgNamespace, "path");
+      path.setAttribute("d", "M14.992 0c-.961 0-1.008 1.002-1.008 1.002v16.361c-2.236-1.648-5.926-1.65-9.196.226C.725 19.922-1.018 24.27.616 27.3c1.663 3.084 6.481 3.596 10.544 1.263C14.316 26.751 16.007 23.807 16 21V1c-.018-.538-.463-1-1.008-1");
+      path.setAttribute("fill", "#000");
+      path.setAttribute("fill-rule", "evenodd"); 
+      newnote.appendChild(path)
+
       newnote.id = 'music-notes';
       notesheet.append(newnote);
 
@@ -212,11 +232,11 @@ function removeImage() {
 function moveBar() {
   const bar = document.querySelector('#music-bar');
   let pos = 0;
-  const loc = setInterval(move, 23);
+  const loc = setInterval(move, 25);
 
   function move() {
     const imgwidth = document.querySelector('#music-animation').clientWidth;
-    if (pos === imgwidth) {
+    if (!imgwidth || pos === imgwidth) {
       clearInterval(loc);
     } else {
       pos++;

@@ -5,8 +5,6 @@
 //
 // anything defined in a previous bundle is accessed via the
 // orig method which is the require for previous bundles
-
-// eslint-disable-next-line no-global-assign
 parcelRequire = (function (modules, cache, entry, globalName) {
   // Save the require from previous bundle to this closure if any
   var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
@@ -77,8 +75,16 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     }, {}];
   };
 
+  var error;
   for (var i = 0; i < entry.length; i++) {
-    newRequire(entry[i]);
+    try {
+      newRequire(entry[i]);
+    } catch (e) {
+      // Save first error but execute all entries
+      if (!error) {
+        error = e;
+      }
+    }
   }
 
   if (entry.length) {
@@ -103,6 +109,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   // Override the current require with this new one
+  parcelRequire = newRequire;
+
+  if (error) {
+    // throw error from earlier, _after updating parcelRequire_
+    throw error;
+  }
+
   return newRequire;
 })({"jazz/note.js":[function(require,module,exports) {
 "use strict";
@@ -1047,6 +1060,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var TOTAL_BARS = 8;
 var MAXSTATES = 17;
 var MINSTATES = 1;
@@ -1165,7 +1180,20 @@ function getUserOptions() {
     instruments: [],
     states: 4
   };
-  userOptions.states = parseInt(document.querySelector('#stateval').value, 10);
+  var stateSelector = document.querySelector('#stateval');
+  console.log(stateSelector.value, 'stateSelector.value', _typeof(stateSelector.value));
+  var selectedState = parseInt(stateSelector.value, 10);
+
+  if (selectedState > MAXSTATES) {
+    selectedState = MAXSTATES;
+    stateSelector.value = MAXSTATES.toString();
+  } else if (selectedState < MINSTATES) {
+    selectedState = MINSTATES;
+    stateSelector.value = MINSTATES.toString();
+  }
+
+  userOptions.states = selectedState;
+  console.log(userOptions.states);
 
   for (var i = 0; i < 4; i++) {
     userOptions.instruments.push(document.querySelector("#instrument-".concat(i)).value);
@@ -1218,7 +1246,14 @@ function makeImage(staff) {
     var noteyvalue = 10; // For each note for each instrument staff, create a new note and place on img
 
     for (var x = 0; x < staff[y].length; x++) {
-      var newnote = document.createElement('div');
+      var svgNamespace = "http://www.w3.org/2000/svg";
+      var newnote = document.createElementNS(svgNamespace, "svg");
+      newnote.setAttribute("viewBox", "-7 0 30 30");
+      var path = document.createElementNS(svgNamespace, "path");
+      path.setAttribute("d", "M14.992 0c-.961 0-1.008 1.002-1.008 1.002v16.361c-2.236-1.648-5.926-1.65-9.196.226C.725 19.922-1.018 24.27.616 27.3c1.663 3.084 6.481 3.596 10.544 1.263C14.316 26.751 16.007 23.807 16 21V1c-.018-.538-.463-1-1.008-1");
+      path.setAttribute("fill", "#000");
+      path.setAttribute("fill-rule", "evenodd");
+      newnote.appendChild(path);
       newnote.id = 'music-notes';
       notesheet.append(newnote);
 
@@ -1248,12 +1283,12 @@ function removeImage() {
 function moveBar() {
   var bar = document.querySelector('#music-bar');
   var pos = 0;
-  var loc = setInterval(move, 23);
+  var loc = setInterval(move, 25);
 
   function move() {
     var imgwidth = document.querySelector('#music-animation').clientWidth;
 
-    if (pos === imgwidth) {
+    if (!imgwidth || pos === imgwidth) {
       clearInterval(loc);
     } else {
       pos++;
@@ -1300,7 +1335,7 @@ function showStates(randomizerOptions) {
   var element = document.querySelector('#stateval');
   element.value = states;
 }
-},{"./jazz":"jazz/index.js","./utm":"utm/index.js"}],"../../../.nvm/versions/node/v10.15.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./jazz":"jazz/index.js","./utm":"utm/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1322,26 +1357,47 @@ function Module(moduleName) {
 }
 
 module.bundle.Module = Module;
+var checkedAssets, assetsToAccept;
 var parent = module.bundle.parent;
 
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37821" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54548" + '/');
 
   ws.onmessage = function (event) {
+    checkedAssets = {};
+    assetsToAccept = [];
     var data = JSON.parse(event.data);
 
     if (data.type === 'update') {
-      console.clear();
-      data.assets.forEach(function (asset) {
-        hmrApply(global.parcelRequire, asset);
-      });
+      var handled = false;
       data.assets.forEach(function (asset) {
         if (!asset.isNew) {
-          hmrAccept(global.parcelRequire, asset.id);
+          var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
+
+          if (didAccept) {
+            handled = true;
+          }
         }
+      }); // Enable HMR for CSS by default.
+
+      handled = handled || data.assets.every(function (asset) {
+        return asset.type === 'css' && asset.generated.js;
       });
+
+      if (handled) {
+        console.clear();
+        data.assets.forEach(function (asset) {
+          hmrApply(global.parcelRequire, asset);
+        });
+        assetsToAccept.forEach(function (v) {
+          hmrAcceptRun(v[0], v[1]);
+        });
+      } else if (location.reload) {
+        // `location` global exists in a web worker context but lacks `.reload()` function.
+        location.reload();
+      }
     }
 
     if (data.type === 'reload') {
@@ -1429,7 +1485,7 @@ function hmrApply(bundle, asset) {
   }
 }
 
-function hmrAccept(bundle, id) {
+function hmrAcceptCheck(bundle, id) {
   var modules = bundle.modules;
 
   if (!modules) {
@@ -1437,9 +1493,27 @@ function hmrAccept(bundle, id) {
   }
 
   if (!modules[id] && bundle.parent) {
-    return hmrAccept(bundle.parent, id);
+    return hmrAcceptCheck(bundle.parent, id);
   }
 
+  if (checkedAssets[id]) {
+    return;
+  }
+
+  checkedAssets[id] = true;
+  var cached = bundle.cache[id];
+  assetsToAccept.push([bundle, id]);
+
+  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
+    return true;
+  }
+
+  return getParents(global.parcelRequire, id).some(function (id) {
+    return hmrAcceptCheck(global.parcelRequire, id);
+  });
+}
+
+function hmrAcceptRun(bundle, id) {
   var cached = bundle.cache[id];
   bundle.hotData = {};
 
@@ -1464,10 +1538,6 @@ function hmrAccept(bundle, id) {
 
     return true;
   }
-
-  return getParents(global.parcelRequire, id).some(function (id) {
-    return hmrAccept(global.parcelRequire, id);
-  });
 }
-},{}]},{},["../../../.nvm/versions/node/v10.15.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/utm-jazz.e31bb0bc.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+//# sourceMappingURL=/utm-jazz.e31bb0bc.js.map
