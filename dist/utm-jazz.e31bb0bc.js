@@ -124,21 +124,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Note = // REQUIRES: frequency, positive float
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+var Note = exports.default = /*#__PURE__*/_createClass(
+// REQUIRES: frequency, positive float
 //           tied, boolean: if the note is tied to the next note
 function Note(frequency) {
   var tied = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
   _classCallCheck(this, Note);
-
   this.frequency = frequency;
   this.tied = tied;
-};
-
-exports.default = Note;
+});
 },{}],"jazz/note-translator.js":[function(require,module,exports) {
 "use strict";
 
@@ -146,25 +146,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 var _note = _interopRequireDefault(require("./note"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var NoteTranslator =
-/*#__PURE__*/
-function () {
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var NoteTranslator = exports.default = /*#__PURE__*/function () {
   function NoteTranslator(tape) {
     var octave = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
     _classCallCheck(this, NoteTranslator);
-
     this.tape = tape;
     this.freqChart = [0, 65.40639, 73.41619, 82.40689, 87.30706, 97.99886, 110.0000, 123.4708, 130.8128, 65.40639, 73.41619, 82.40689, 87.30706, 97.99886, 110.0000, 123.4708, 130.8128];
     this.notes = [];
@@ -172,13 +165,11 @@ function () {
       return f * Math.pow(2, octave);
     });
   }
-
-  _createClass(NoteTranslator, [{
+  return _createClass(NoteTranslator, [{
     key: "translate",
     value: function translate() {
       for (var y = 0; y < this.tape.length; y++) {
         var row = [];
-
         for (var x = 0; x < this.tape[y].length; x++) {
           var currVal = this.tape[y][x];
           var freq = this.freqChart[currVal];
@@ -186,7 +177,6 @@ function () {
           var note = new _note.default(freq, tied);
           row.push(note);
         }
-
         this.notes.push(row);
       }
     }
@@ -196,11 +186,7 @@ function () {
       return this.notes;
     }
   }]);
-
-  return NoteTranslator;
 }();
-
-exports.default = NoteTranslator;
 },{"./note":"jazz/note.js"}],"node_modules/web-audio-oscillators/dist/sine.js":[function(require,module,exports) {
 "use strict";
 
@@ -583,55 +569,50 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 var _webAudioOscillators = _interopRequireDefault(require("web-audio-oscillators"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var AudioContext = window.AudioContext || window.webkitAudioContext;
-
-var Jazz =
-/*#__PURE__*/
-function () {
+var Jazz = exports.default = /*#__PURE__*/function () {
   // REQUIRES: ocsillatorTypes array of String oscillator types
   function Jazz(oscillatorTypes) {
     _classCallCheck(this, Jazz);
-
     this.oscillatorTypes = oscillatorTypes;
     this.oscillators = [];
     this.playing = false;
     this.secondsPerNote = 0.25;
     this.noteLength = 0.9;
     this.attack = 0.1;
-  } // REQUIRES: a 2D musical staff: a collection of Notes
+  }
+
+  // REQUIRES: a 2D musical staff: a collection of Notes
   // MODIFIES: this
   // EFFECTS: plays the musical staff to the default destination (speakers)
-
-
-  _createClass(Jazz, [{
+  return _createClass(Jazz, [{
     key: "play",
     value: function play(staff) {
       this.context = new AudioContext();
       this.createOscillators(staff);
       this.playing = true;
-    } // REQUIRES: a 2D musical staff: a collection of Hz values
+    }
+
+    // REQUIRES: a 2D musical staff: a collection of Hz values
     // MODIFIES: this
     // EFFECTS: creates oscillators for each stem and attaches them context
-
   }, {
     key: "createOscillators",
     value: function createOscillators(staff) {
       for (var i = 0; i < staff.length; i++) {
         var stem = staff[i];
-
         var oscillator = _webAudioOscillators.default[this.oscillatorTypes[i]](this.context);
-
         var gainNode = this.context.createGain();
         oscillator.type = this.oscillatorTypes[i];
         oscillator.gainNode = gainNode;
@@ -640,32 +621,30 @@ function () {
         this.setNotes(oscillator, stem);
         this.oscillators.push(oscillator);
       }
-    } // REQUIRES: unstarted oscillator, stem: array of Hz values
+    }
+
+    // REQUIRES: unstarted oscillator, stem: array of Hz values
     // MODIFIES: this
     // EFFECTS: applies notes from stem to oscillator with proper timing
-
   }, {
     key: "setNotes",
     value: function setNotes(oscillator, stem) {
       for (var i = 0; i < stem.length; i++) {
         var creationMethod = this.createTone.bind(this);
-
         if (stem[i].tied) {
           creationMethod = this.createTiedTone.bind(this);
         }
-
         if (stem[i].frequency === 0) {
           creationMethod = this.createRest.bind(this);
         }
-
         creationMethod(oscillator, stem[i].frequency, i);
       }
-
       this.createRest(oscillator, 0, stem.length);
-    } // REQUIRES: oscillator, frequency: float, i: position
+    }
+
+    // REQUIRES: oscillator, frequency: float, i: position
     // MODIFIES: oscillator
     // EFFECTS: adds an un-tied note tone to the oscillator
-
   }, {
     key: "createTone",
     value: function createTone(oscillator, frequency, i) {
@@ -683,60 +662,44 @@ function () {
       oscillator.frequency.setValueAtTime(frequency, i * this.secondsPerNote);
       gain.setValueAtTime(1, (i + this.noteLength) * this.secondsPerNote);
       oscillator.stop((i + 1) * this.secondsPerNote);
-    } // REQUIRES: oscillator, i: position
+    }
+
+    // REQUIRES: oscillator, i: position
     // MODIFIES: oscillator
     // EFFECTS: adds silence/rest to the oscillator
-
   }, {
     key: "createRest",
     value: function createRest(oscillator, frequency, i) {
       var gain = oscillator.gainNode.gain;
       gain.linearRampToValueAtTime(0.01, i * this.secondsPerNote);
       oscillator.stop((i + 1) * this.secondsPerNote);
-    } // MODIFIES: this
-    // EFFECTS: stops the current playback
+    }
 
+    // MODIFIES: this
+    // EFFECTS: stops the current playback
   }, {
     key: "stop",
     value: function stop() {
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
+      var _iterator = _createForOfIteratorHelper(this.oscillators),
+        _step;
       try {
-        for (var _iterator = this.oscillators[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var o = _step.value;
           o.stop(this.context.currentTime);
         }
       } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
+        _iterator.e(err);
       } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
+        _iterator.f();
       }
-
       this.oscillators = [];
-
       if (this.context) {
         this.context.suspend();
       }
-
       this.playing = false;
     }
   }]);
-
-  return Jazz;
 }();
-
-exports.default = Jazz;
 },{"web-audio-oscillators":"node_modules/web-audio-oscillators/dist/index.js"}],"jazz/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -755,12 +718,9 @@ Object.defineProperty(exports, "default", {
     return _jazz.default;
   }
 });
-
 var _noteTranslator = _interopRequireDefault(require("./note-translator"));
-
 var _jazz = _interopRequireDefault(require("./jazz"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 },{"./note-translator":"jazz/note-translator.js","./jazz":"jazz/jazz.js"}],"machinetable/machinetable.js":[function(require,module,exports) {
 "use strict";
 
@@ -768,46 +728,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var MachineTable =
-/*#__PURE__*/
-function () {
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var MachineTable = exports.default = /*#__PURE__*/function () {
   // Machine table class
+
   // EFFECTS: creates an array that has state # of columns, symbol # of rows.
   function MachineTable(states) {
     var symbols = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 17;
-
     _classCallCheck(this, MachineTable);
-
     this.states = states;
     this.symbols = symbols;
     this.machineTable = [];
-
     for (var i = 0; i < states; i++) {
       this.machineTable.push(new Array(symbols));
     }
   }
-
-  _createClass(MachineTable, [{
+  return _createClass(MachineTable, [{
     key: "getInstruction",
     value: function getInstruction(state, symbol) {
       var instruction = this.machineTable[state][symbol];
-
       if (instruction) {
         return instruction;
       }
-
       this.machineTable[state][symbol] = this.generate();
       instruction = this.machineTable[state][symbol];
       return instruction;
-    } // EFFECTS: generates new instructions for machine table in form
+    }
 
+    // EFFECTS: generates new instructions for machine table in form
   }, {
     key: "generate",
     value: function generate() {
@@ -825,11 +778,7 @@ function () {
       return Math.floor(Math.random() * (max - min)) + min;
     }
   }]);
-
-  return MachineTable;
 }();
-
-exports.default = MachineTable;
 },{}],"machinetable/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -842,10 +791,8 @@ Object.defineProperty(exports, "default", {
     return _machinetable.default;
   }
 });
-
 var _machinetable = _interopRequireDefault(require("./machinetable"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 },{"./machinetable":"machinetable/machinetable.js"}],"utm/directions.js":[function(require,module,exports) {
 "use strict";
 
@@ -853,13 +800,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.directions = void 0;
-var directions = {
+var directions = exports.directions = {
   UP: 0,
   RIGHT: 1,
   DOWN: 2,
   LEFT: 3
 };
-exports.directions = directions;
 },{}],"utm/utm.js":[function(require,module,exports) {
 "use strict";
 
@@ -867,92 +813,82 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 var _machinetable = _interopRequireDefault(require("../machinetable"));
-
 var _directions = require("./directions");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var UTM =
-/*#__PURE__*/
-function () {
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var UTM = exports.default = /*#__PURE__*/function () {
   // REQUIRES 2D array tape
   //          positive int operationCount
   function UTM(tape, operationCount) {
     var states = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 4;
-
     _classCallCheck(this, UTM);
-
     this.x = 0;
     this.y = 0;
     this.machineTable = new _machinetable.default(states);
     this.tape = tape;
     this.operationCount = operationCount;
     this.state = 0;
-  } // MODIFIES: this
+  }
+
+  // MODIFIES: this
   // EFFECTS: performs a number of operations equal to operationCount
-
-
-  _createClass(UTM, [{
+  return _createClass(UTM, [{
     key: "begin",
     value: function begin() {
       for (var i = 0; i < this.operationCount; i++) {
         this.read();
-
         var _this$machineTable$ge = this.machineTable.getInstruction(this.state, this.lastRead),
-            write = _this$machineTable$ge.write,
-            move = _this$machineTable$ge.move,
-            state = _this$machineTable$ge.state;
-
+          write = _this$machineTable$ge.write,
+          move = _this$machineTable$ge.move,
+          state = _this$machineTable$ge.state;
         this.write(write);
         this.move(move);
         this.changeState(state);
       }
-    } // MODIFIES: this
-    // EFFECTS: reads the symbol that is currently under the tape.
+    }
 
+    // MODIFIES: this
+    // EFFECTS: reads the symbol that is currently under the tape.
   }, {
     key: "read",
     value: function read() {
       this.lastRead = this.tape[this.y][this.x];
-    } // MODIFIES: this
-    // EFFECTS: writes a symbol to the current tape location based on state.
+    }
 
+    // MODIFIES: this
+    // EFFECTS: writes a symbol to the current tape location based on state.
   }, {
     key: "write",
     value: function write(toWrite) {
       this.tape[this.y][this.x] = toWrite;
-    } // MODIFIES: this
-    // EFFECTS: moves on the tape in the direction given by current state.
+    }
 
+    // MODIFIES: this
+    // EFFECTS: moves on the tape in the direction given by current state.
   }, {
     key: "move",
     value: function move(direction) {
       switch (direction) {
         case _directions.directions.UP:
           return this.moveUp();
-
         case _directions.directions.RIGHT:
           return this.moveRight();
-
         case _directions.directions.DOWN:
           return this.moveDown();
-
         case _directions.directions.LEFT:
           return this.moveLeft();
-
         default:
       }
-    } // MODIFIES: this
-    // EFFECTS: moves up on the tape, rolling over to the bottom.
+    }
 
+    // MODIFIES: this
+    // EFFECTS: moves up on the tape, rolling over to the bottom.
   }, {
     key: "moveUp",
     value: function moveUp() {
@@ -961,9 +897,10 @@ function () {
       } else {
         this.y--;
       }
-    } // MODIFIES: this
-    // EFFECTS: moves right on the tape, rolling over to the left.
+    }
 
+    // MODIFIES: this
+    // EFFECTS: moves right on the tape, rolling over to the left.
   }, {
     key: "moveRight",
     value: function moveRight() {
@@ -972,9 +909,10 @@ function () {
       } else {
         this.x++;
       }
-    } // MODIFIES: this
-    // EFFECTS: moves down on the tape, rolling over to the top.
+    }
 
+    // MODIFIES: this
+    // EFFECTS: moves down on the tape, rolling over to the top.
   }, {
     key: "moveDown",
     value: function moveDown() {
@@ -983,9 +921,10 @@ function () {
       } else {
         this.y++;
       }
-    } // MODIFIES: this
-    // EFFECTS: moves left on the tape, rolling over to the right.
+    }
 
+    // MODIFIES: this
+    // EFFECTS: moves left on the tape, rolling over to the right.
   }, {
     key: "moveLeft",
     value: function moveLeft() {
@@ -994,15 +933,17 @@ function () {
       } else {
         this.x--;
       }
-    } // MODIFIES: this
-    // EFFECTS: changes to new state as specified by current state.
+    }
 
+    // MODIFIES: this
+    // EFFECTS: changes to new state as specified by current state.
   }, {
     key: "changeState",
     value: function changeState(newState) {
       this.state = parseInt(newState, 10);
-    } // Getters
+    }
 
+    // Getters
   }, {
     key: "getState",
     value: function getState() {
@@ -1014,11 +955,7 @@ function () {
       return this.tape;
     }
   }]);
-
-  return UTM;
 }();
-
-exports.default = UTM;
 },{"../machinetable":"machinetable/index.js","./directions":"utm/directions.js"}],"utm/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -1032,14 +969,12 @@ Object.defineProperty(exports, "default", {
     return _utm.default;
   }
 });
-
 var _utm = _interopRequireDefault(require("./utm"));
-
 var _directions = require("./directions");
-
 Object.keys(_directions).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _directions[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
@@ -1047,21 +982,16 @@ Object.keys(_directions).forEach(function (key) {
     }
   });
 });
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 },{"./utm":"utm/utm.js","./directions":"utm/directions.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _jazz = _interopRequireWildcard(require("./jazz"));
-
 var _utm = _interopRequireDefault(require("./utm"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var TOTAL_BARS = 8;
 var MAXSTATES = 17;
 var MINSTATES = 1;
@@ -1070,20 +1000,17 @@ document.addEventListener('DOMContentLoaded', function () {
   var gobutton = document.querySelector('#begin-button');
   gobutton.addEventListener('click', function () {
     // Reset img and any sound
-    resetAll(); // Have utm play
+    resetAll();
 
+    // Have utm play
     var userOptions = getUserOptions();
     var tape = makeTape(); // Empty tape 4x8
-
     var utm = new _utm.default(tape, 20, userOptions.states);
     jazz.oscillatorTypes = userOptions.instruments;
     var staff = [];
-
     for (var i = 0; i < TOTAL_BARS; i++) {
       utm.begin();
-
       var _tape = utm.getTape();
-
       for (var j = 0; j < _tape.length; j++) {
         if (staff[j]) {
           staff[j] = staff[j].concat(_tape[j].slice());
@@ -1092,7 +1019,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
-
     var noteTranslator = new _jazz.NoteTranslator(staff);
     noteTranslator.translate();
     var freqs = noteTranslator.getFreq();
@@ -1122,20 +1048,17 @@ document.addEventListener('DOMContentLoaded', function () {
   var randomizebutton = document.querySelector('#random-button');
   randomizebutton.addEventListener('click', function () {
     // Reset img and any sound
-    resetAll(); // Have utm play with randomized instruments and states
+    resetAll();
 
+    // Have utm play with randomized instruments and states
     var randomizerOptions = getRandomizerOptions();
     var tape = makeTape(); // Empty tape 4x8
-
     var utm = new _utm.default(tape, 20, randomizerOptions.states);
     jazz.oscillatorTypes = randomizerOptions.instruments;
     var staff = [];
-
     for (var i = 0; i < TOTAL_BARS; i++) {
       utm.begin();
-
       var _tape2 = utm.getTape();
-
       for (var j = 0; j < _tape2.length; j++) {
         if (staff[j]) {
           staff[j] = staff[j].concat(_tape2[j].slice());
@@ -1144,7 +1067,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
-
     var noteTranslator = new _jazz.NoteTranslator(staff);
     noteTranslator.translate();
     var freqs = noteTranslator.getFreq();
@@ -1174,7 +1096,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
 function getUserOptions() {
   var userOptions = {
     instruments: [],
@@ -1183,7 +1104,6 @@ function getUserOptions() {
   var stateSelector = document.querySelector('#stateval');
   console.log(stateSelector.value, 'stateSelector.value', _typeof(stateSelector.value));
   var selectedState = parseInt(stateSelector.value, 10);
-
   if (selectedState > MAXSTATES) {
     selectedState = MAXSTATES;
     stateSelector.value = MAXSTATES.toString();
@@ -1191,17 +1111,13 @@ function getUserOptions() {
     selectedState = MINSTATES;
     stateSelector.value = MINSTATES.toString();
   }
-
   userOptions.states = selectedState;
   console.log(userOptions.states);
-
   for (var i = 0; i < 4; i++) {
     userOptions.instruments.push(document.querySelector("#instrument-".concat(i)).value);
   }
-
   return userOptions;
 }
-
 function getRandomizerOptions() {
   var randomizerOptions = {
     instruments: [],
@@ -1209,32 +1125,26 @@ function getRandomizerOptions() {
   };
   randomizerOptions.states = Math.floor(Math.random() * MAXSTATES) + MINSTATES;
   var instrumentsoptions = ['chiptune', 'brass', 'bass', 'organ'];
-
   for (var i = 0; i < 4; i++) {
     var index = Math.floor(Math.random() * instrumentsoptions.length);
     randomizerOptions.instruments.push(instrumentsoptions[index]);
   }
-
   return randomizerOptions;
 }
-
 function makeTape() {
   var tape = [];
-
   for (var i = 0; i < 4; i++) {
     tape[i] = [];
-
     for (var j = 0; j < 8; j++) {
       tape[i][j] = 0;
     }
   }
-
   return tape;
 }
-
 function makeImage(staff) {
-  var musicsheet = document.querySelector('#music-sheets'); // For each row in the staff (each instrument) create an image of a staff
+  var musicsheet = document.querySelector('#music-sheets');
 
+  // For each row in the staff (each instrument) create an image of a staff
   for (var y = 0; y < staff.length; y++) {
     var notesheet = document.createElement('div');
     notesheet.id = 'music-animation';
@@ -1243,8 +1153,8 @@ function makeImage(staff) {
     divider.id = 'sheet-divider';
     musicsheet.append(divider);
     var notexvalue = 10;
-    var noteyvalue = 10; // For each note for each instrument staff, create a new note and place on img
-
+    var noteyvalue = 10;
+    // For each note for each instrument staff, create a new note and place on img
     for (var x = 0; x < staff[y].length; x++) {
       var svgNamespace = "http://www.w3.org/2000/svg";
       var newnote = document.createElementNS(svgNamespace, "svg");
@@ -1256,7 +1166,6 @@ function makeImage(staff) {
       newnote.appendChild(path);
       newnote.id = 'music-notes';
       notesheet.append(newnote);
-
       if (staff[y][x] === 0) {
         newnote.style.bottom = noteyvalue;
         newnote.style.left = notexvalue;
@@ -1270,24 +1179,19 @@ function makeImage(staff) {
     }
   }
 }
-
 function removeImage() {
   resetAll();
-
   for (var j = 0; j < 4; j++) {
     var instname = document.querySelector("#inst-".concat(j));
     instname.innerHTML = '';
   }
 }
-
 function moveBar() {
   var bar = document.querySelector('#music-bar');
   var pos = 0;
   var loc = setInterval(move, 25);
-
   function move() {
     var imgwidth = document.querySelector('#music-animation').clientWidth;
-
     if (!imgwidth || pos === imgwidth) {
       clearInterval(loc);
     } else {
@@ -1296,20 +1200,16 @@ function moveBar() {
     }
   }
 }
-
 function resetAll() {
   var musicsheet = document.querySelector('#music-sheets');
-
   while (musicsheet.firstChild) {
     musicsheet.removeChild(musicsheet.firstChild);
   }
-
   var newbar = document.createElement('div');
   newbar.id = 'music-bar';
   musicsheet.append(newbar);
   jazz.stop();
 }
-
 function stop(jazz) {
   jazz.stop();
   var musicbar = document.querySelector('#music-bar');
@@ -1318,10 +1218,8 @@ function stop(jazz) {
   musicbar.parentNode.replaceChild(newbar, musicbar);
   newbar.style.left = pos + 'px';
 }
-
 function showInstruments(userOptions) {
   var instr = userOptions.instruments;
-
   for (var i = 0; i < instr.length; i++) {
     var element = document.querySelector("#inst-".concat(i));
     element.innerHTML = instr[i];
@@ -1329,7 +1227,6 @@ function showInstruments(userOptions) {
     choseninstr.value = instr[i];
   }
 }
-
 function showStates(randomizerOptions) {
   var states = randomizerOptions.states;
   var element = document.querySelector('#stateval');
@@ -1339,7 +1236,6 @@ function showStates(randomizerOptions) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
-
 function Module(moduleName) {
   OldModule.call(this, moduleName);
   this.hot = {
@@ -1355,37 +1251,32 @@ function Module(moduleName) {
   };
   module.bundle.hotData = null;
 }
-
 module.bundle.Module = Module;
 var checkedAssets, assetsToAccept;
 var parent = module.bundle.parent;
-
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54548" + '/');
-
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56750" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
     var data = JSON.parse(event.data);
-
     if (data.type === 'update') {
       var handled = false;
       data.assets.forEach(function (asset) {
         if (!asset.isNew) {
           var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
-
           if (didAccept) {
             handled = true;
           }
         }
-      }); // Enable HMR for CSS by default.
+      });
 
+      // Enable HMR for CSS by default.
       handled = handled || data.assets.every(function (asset) {
         return asset.type === 'css' && asset.generated.js;
       });
-
       if (handled) {
         console.clear();
         data.assets.forEach(function (asset) {
@@ -1399,20 +1290,16 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         location.reload();
       }
     }
-
     if (data.type === 'reload') {
       ws.close();
-
       ws.onclose = function () {
         location.reload();
       };
     }
-
     if (data.type === 'error-resolved') {
       console.log('[parcel] ✨ Error resolved');
       removeErrorOverlay();
     }
-
     if (data.type === 'error') {
       console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
       removeErrorOverlay();
@@ -1421,19 +1308,17 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
     }
   };
 }
-
 function removeErrorOverlay() {
   var overlay = document.getElementById(OVERLAY_ID);
-
   if (overlay) {
     overlay.remove();
   }
 }
-
 function createErrorOverlay(data) {
   var overlay = document.createElement('div');
-  overlay.id = OVERLAY_ID; // html encode message and stack trace
+  overlay.id = OVERLAY_ID;
 
+  // html encode message and stack trace
   var message = document.createElement('div');
   var stackTrace = document.createElement('pre');
   message.innerText = data.error.message;
@@ -1441,41 +1326,31 @@ function createErrorOverlay(data) {
   overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
   return overlay;
 }
-
 function getParents(bundle, id) {
   var modules = bundle.modules;
-
   if (!modules) {
     return [];
   }
-
   var parents = [];
   var k, d, dep;
-
   for (k in modules) {
     for (d in modules[k][1]) {
       dep = modules[k][1][d];
-
       if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
         parents.push(k);
       }
     }
   }
-
   if (bundle.parent) {
     parents = parents.concat(getParents(bundle.parent, id));
   }
-
   return parents;
 }
-
 function hmrApply(bundle, asset) {
   var modules = bundle.modules;
-
   if (!modules) {
     return;
   }
-
   if (modules[asset.id] || !bundle.parent) {
     var fn = new Function('require', 'module', 'exports', asset.generated.js);
     asset.isNew = !modules[asset.id];
@@ -1484,58 +1359,45 @@ function hmrApply(bundle, asset) {
     hmrApply(bundle.parent, asset);
   }
 }
-
 function hmrAcceptCheck(bundle, id) {
   var modules = bundle.modules;
-
   if (!modules) {
     return;
   }
-
   if (!modules[id] && bundle.parent) {
     return hmrAcceptCheck(bundle.parent, id);
   }
-
   if (checkedAssets[id]) {
     return;
   }
-
   checkedAssets[id] = true;
   var cached = bundle.cache[id];
   assetsToAccept.push([bundle, id]);
-
   if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
     return true;
   }
-
   return getParents(global.parcelRequire, id).some(function (id) {
     return hmrAcceptCheck(global.parcelRequire, id);
   });
 }
-
 function hmrAcceptRun(bundle, id) {
   var cached = bundle.cache[id];
   bundle.hotData = {};
-
   if (cached) {
     cached.hot.data = bundle.hotData;
   }
-
   if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
     cached.hot._disposeCallbacks.forEach(function (cb) {
       cb(bundle.hotData);
     });
   }
-
   delete bundle.cache[id];
   bundle(id);
   cached = bundle.cache[id];
-
   if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
     cached.hot._acceptCallbacks.forEach(function (cb) {
       cb();
     });
-
     return true;
   }
 }
